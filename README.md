@@ -1,6 +1,8 @@
 # pi-phone
 Raspberry Pi-powered landline phone for art installation
 
+More info on the [Wiki](https://github.com/jonathanbfriedman/pi-phone/wiki).
+
 # Project Description
 - Landline phone to ring according to admin-configurable intervals (e.g. 5 minutes)
 - When user picks up phone from hook during ringing, randomly selected audio file plays into handset speaker
