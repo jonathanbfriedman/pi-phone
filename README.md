@@ -6,7 +6,7 @@ More info on the [Wiki](https://github.com/jonathanbfriedman/pi-phone/wiki).
 # Project Description
 - Landline phone to ring according to admin-configurable intervals (e.g. 5 minutes)
 - When user picks up phone from hook during ringing, randomly selected audio file plays into handset speaker
-- When user picks up phone from hook when not ringing or after audio finishes, dial tone plays
+- Dial tone plays after audio finishes or if user picks up when phone is not ringing
 - User-adjustable volume control (three-way switch on handset)
 - Secure WiFi access for administration (secure shared folder to edit configuration or audio files)
 - Powered by Raspberry Pi 3
