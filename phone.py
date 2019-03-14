@@ -98,13 +98,14 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
             self.ringer_process.terminate()
             # Force ringer pin output to low
             GPIO.output(self.ringer_pin, GPIO.LOW)
-        # Play random audio
-        self.play_random_audio()
-        self.state = PLAYING
-        while self.mixer.music.get_busy():
-            sleep(0.1)
-        self.play_dial_tone()
-        self.state = DIAL_TONE
+        if self.state != PLAYING:
+            # Play random audio
+            self.state = PLAYING
+            self.play_random_audio()
+            while self.mixer.music.get_busy():
+                sleep(0.1)
+            self.state = DIAL_TONE
+            self.play_dial_tone()
 
 
     def hook_change(self, channel):
@@ -128,15 +129,15 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
             self.ringer_process = ringer_process
         else:
             # Play random audio
-            self.play_random_audio()
             self.state = PLAYING
+            self.play_random_audio()
             while self.mixer.music.get_busy():
                 sleep(0.2)
-            self.play_dial_tone()
             self.state = DIAL_TONE
+            self.play_dial_tone()
 
         try:
-            GPIO.add_event_detect(self.hook_pin, GPIO.BOTH, callback=self.hook_change, bouncetime=200)
+            GPIO.add_event_detect(self.hook_pin, GPIO.BOTH, callback=self.hook_change, bouncetime=50)
             # self.hook_change(self.hook_pin)
             pause()
         except KeyboardInterrupt:
