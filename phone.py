@@ -3,8 +3,6 @@
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
-from random import random
-
 from time import sleep
 
 from multiprocessing import Process
@@ -14,7 +12,6 @@ from multiprocessing import Process
 # https://github.com/jonathanbfriedman/pi-phone
 
 from signal import pause
-from random import random
 
 from config import RING_MIN
 from config import RING_MAX
@@ -95,20 +92,20 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
 
     def on_to_off_hook(self):
         print("on_to_off_hook called")
-        print("state is " + str(self.state))
         # If ringer is playing:
         if self.state == RINGING:
             # Stop ringer process
             self.ringer_process.terminate()
             # Force ringer pin output to low
             GPIO.output(self.ringer_pin, GPIO.LOW)
+        # Play random audio
+        self.play_random_audio()
+        self.state = PLAYING
+        while self.mixer.music.get_busy():
+            sleep(0.1)
+        self.play_dial_tone()
+        self.state = DIAL_TONE
 
-            # Play random audio
-            self.play_random_audio()
-            self.state = PLAYING
-        else:   
-            # It's not ringing, play dial tone as a process
-            self.play_dial_tone()
 
     def hook_change(self, channel):
         print("hook change callback called")
@@ -118,25 +115,30 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
             pass
         assert(channel == self.hook_pin)
         if GPIO.input(self.hook_pin):
-            self.on_to_off_hook()
-        else:
             self.off_to_on_hook()
+        else:
+            self.on_to_off_hook()
 
     def run(self):
         print("Running pi phone...")
         # Call hook_change if phones is taken off hook or put back on
         if GPIO.input(self.hook_pin):
-            self.play_dial_tone()
-        else:
             ringer_process = Process(target=self.play_ringer)
             ringer_process.start()
             self.ringer_process = ringer_process
+        else:
+            # Play random audio
+            self.play_random_audio()
+            self.state = PLAYING
+            while self.mixer.music.get_busy():
+                sleep(0.2)
+            self.play_dial_tone()
+            self.state = DIAL_TONE
+
         try:
-            print("in try")
             GPIO.add_event_detect(self.hook_pin, GPIO.BOTH, callback=self.hook_change, bouncetime=200)
             # self.hook_change(self.hook_pin)
-            while True:
-                1
+            pause()
         except KeyboardInterrupt:
             GPIO.cleanup()
         GPIO.cleanup()
