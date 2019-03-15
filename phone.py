@@ -102,10 +102,10 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
             # Play random audio
             self.state = PLAYING
             self.play_random_audio()
-            while self.mixer.music.get_busy():
-                sleep(0.1)
-            self.state = DIAL_TONE
-            self.play_dial_tone()
+            # while self.mixer.music.get_busy():
+            #     sleep(0.1)
+            # self.state = DIAL_TONE
+            # self.play_dial_tone()
         else:
             try:
                 self.ringer_process.terminate()
@@ -138,10 +138,10 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
             # Play random audio
             self.state = PLAYING
             self.play_random_audio()
-            while self.mixer.music.get_busy():
-                sleep(0.2)
-            self.state = DIAL_TONE
-            self.play_dial_tone()
+            # while self.mixer.music.get_busy():
+            #     sleep(0.2)
+            # self.state = DIAL_TONE
+            # self.play_dial_tone()
 
         try:
             GPIO.add_event_detect(self.hook_pin, GPIO.BOTH, callback=self.hook_change)
