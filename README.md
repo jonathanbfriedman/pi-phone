@@ -4,7 +4,6 @@ Raspberry Pi-powered landline phone for art installation
 # Project Description
 - Landline phone to ring according to admin-configurable intervals (e.g. 5 minutes)
 - When user picks up phone from hook, randomly selected audio file plays into handset speaker
-- Dial tone plays after audio finishes
 - User-adjustable volume control (three-way switch on handset)
 - Secure WiFi access for administration (secure shared folder to edit configuration or audio files)
 - Powered by Raspberry Pi 3
