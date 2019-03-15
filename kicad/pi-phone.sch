@@ -1,0 +1,375 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:switches
+LIBS:relays
+LIBS:motors
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Screw_Terminal_01x02 J2
+U 1 1 5C8BFDBC
+P 5100 4050
+F 0 "J2" H 5100 4150 50  0000 C CNN
+F 1 "Ringer Power Supply" H 5100 3800 50  0000 C CNN
+F 2 "" H 5100 4050 50  0001 C CNN
+F 3 "" H 5100 4050 50  0001 C CNN
+	1    5100 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Screw_Terminal_01x02 J1
+U 1 1 5C8BFE19
+P 5000 3250
+F 0 "J1" H 5000 3350 50  0000 C CNN
+F 1 "Hook Switch Block" V 5150 3200 50  0000 C CNN
+F 2 "" H 5000 3250 50  0001 C CNN
+F 3 "" H 5000 3250 50  0001 C CNN
+	1    5000 3250
+	0    -1   1    0   
+$EndComp
+$Comp
+L Screw_Terminal_01x02 J3
+U 1 1 5C8BFE74
+P 6350 5150
+F 0 "J3" H 6350 5250 50  0000 C CNN
+F 1 "Ringer Input Block" H 6350 4950 50  0000 C CNN
+F 2 "" H 6350 5150 50  0001 C CNN
+F 3 "" H 6350 5150 50  0001 C CNN
+	1    6350 5150
+	-1   0    0    -1  
+$EndComp
+$Comp
+L PC817 U2
+U 1 1 5C8BFE8F
+P 6400 4100
+F 0 "U2" H 6200 4300 50  0000 L CNN
+F 1 "Optocoupler" H 6200 3850 50  0000 L CNN
+F 2 "Housings_DIP:DIP-4_W7.62mm" H 6200 3900 50  0001 L CIN
+F 3 "" H 6400 4100 50  0001 L CNN
+	1    6400 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L PC817 U1
+U 1 1 5C8BFEAE
+P 3750 4100
+F 0 "U1" H 3550 4300 50  0000 L CNN
+F 1 "Optocoupler" H 3550 3850 50  0000 L CNN
+F 2 "Housings_DIP:DIP-4_W7.62mm" H 3550 3900 50  0001 L CIN
+F 3 "" H 3750 4100 50  0001 L CNN
+	1    3750 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L IRLB8721PBF Q1
+U 1 1 5C8C02AE
+P 5050 5100
+F 0 "Q1" H 5300 5175 50  0000 L CNN
+F 1 "Ringer MOSFET switch" H 4750 4800 50  0000 L CNN
+F 2 "TO_SOT_Packages_THT:TO-220_Vertical" H 5300 5025 50  0001 L CIN
+F 3 "" H 5050 5100 50  0001 L CNN
+	1    5050 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_Push_Open SW1
+U 1 1 5C8C0871
+P 5050 2500
+F 0 "SW1" H 5050 2400 50  0000 C CNN
+F 1 "Hook Switch" H 5050 2600 50  0000 C CNN
+F 2 "" H 5050 2700 50  0001 C CNN
+F 3 "" H 5050 2700 50  0001 C CNN
+	1    5050 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R2
+U 1 1 5C8C0AB1
+P 4500 3700
+F 0 "R2" V 4580 3700 50  0000 C CNN
+F 1 "500" V 4500 3700 50  0000 C CNN
+F 2 "" V 4430 3700 50  0001 C CNN
+F 3 "" H 4500 3700 50  0001 C CNN
+	1    4500 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R1
+U 1 1 5C8C0D64
+P 3300 4000
+F 0 "R1" V 3200 4000 50  0000 C CNN
+F 1 "500" V 3300 4000 50  0000 C CNN
+F 2 "" V 3230 4000 50  0001 C CNN
+F 3 "" H 3300 4000 50  0001 C CNN
+	1    3300 4000
+	0    1    1    0   
+$EndComp
+$Comp
+L R R3
+U 1 1 5C8C108F
+P 4500 4600
+F 0 "R3" V 4580 4600 50  0000 C CNN
+F 1 "10k" V 4500 4600 50  0000 C CNN
+F 2 "" V 4430 4600 50  0001 C CNN
+F 3 "" H 4500 4600 50  0001 C CNN
+	1    4500 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L D D1
+U 1 1 5C8C16F8
+P 5650 4600
+F 0 "D1" H 5650 4500 50  0000 C CNN
+F 1 "Ringer Diode" H 5650 4700 50  0000 C CNN
+F 2 "" H 5650 4600 50  0001 C CNN
+F 3 "" H 5650 4600 50  0001 C CNN
+	1    5650 4600
+	-1   0    0    1   
+$EndComp
+Text Label 6550 5150 0    60   ~ 0
+Ringer_Input_5V
+Text Label 6550 5250 0    60   ~ 0
+Ringer_Input_GND
+Text Label 4900 4150 2    60   ~ 0
+Ringer_PSU_GND
+Text Label 4900 4050 2    60   ~ 0
+Ringer_PSU_5V
+Text Label 3150 4000 2    60   ~ 0
+Ringer_GPIO
+Text Label 3450 4200 2    60   ~ 0
+RPi_GND
+Text Label 6700 4000 0    60   ~ 0
+GPIO4
+Text Label 6700 4200 0    60   ~ 0
+RPi_GND
+$Comp
+L Conn_02x20_Odd_Even J6
+U 1 1 5C8C5B5C
+P 8000 3650
+F 0 "J6" H 8050 4650 50  0000 C CNN
+F 1 "RPi Pin Header" H 8050 2550 50  0000 C CNN
+F 2 "" H 8000 3650 50  0001 C CNN
+F 3 "" H 8000 3650 50  0001 C CNN
+	1    8000 3650
+	1    0    0    -1  
+$EndComp
+Text Label 7800 3050 2    60   ~ 0
+GPIO4
+Text Label 7800 3150 2    60   ~ 0
+RPi_GND
+Text Label 8300 2950 0    60   ~ 0
+RPi_GND
+Text Label 8300 3050 0    60   ~ 0
+GPIO14
+NoConn ~ 7800 2750
+NoConn ~ 7800 2850
+NoConn ~ 7800 2950
+NoConn ~ 7800 3250
+NoConn ~ 7800 3350
+NoConn ~ 7800 3450
+NoConn ~ 7800 3550
+NoConn ~ 8300 2750
+NoConn ~ 8300 3150
+NoConn ~ 8300 3250
+NoConn ~ 8300 3350
+NoConn ~ 8300 3450
+NoConn ~ 8300 3550
+NoConn ~ 8300 3650
+NoConn ~ 7800 3650
+NoConn ~ 7800 3750
+NoConn ~ 7800 3850
+NoConn ~ 7800 3950
+NoConn ~ 7800 4050
+NoConn ~ 7800 4150
+NoConn ~ 7800 4250
+NoConn ~ 7800 4350
+NoConn ~ 7800 4450
+NoConn ~ 7800 4550
+NoConn ~ 7800 4650
+NoConn ~ 8300 4650
+NoConn ~ 8300 4550
+NoConn ~ 8300 4450
+NoConn ~ 8300 4350
+NoConn ~ 8300 4250
+NoConn ~ 8300 4150
+NoConn ~ 8300 4050
+NoConn ~ 8300 3950
+NoConn ~ 8300 3850
+NoConn ~ 8300 3750
+Wire Wire Line
+	4850 2500 4850 2700
+Wire Wire Line
+	4850 2700 5000 2700
+Wire Wire Line
+	5000 2700 5000 3050
+Wire Wire Line
+	5100 2700 5250 2700
+Wire Wire Line
+	5250 2700 5250 2500
+Wire Wire Line
+	5800 4600 6550 4600
+Wire Wire Line
+	6550 4600 6550 5150
+Wire Wire Line
+	5150 4900 5800 4900
+Wire Wire Line
+	5800 4900 5800 5500
+Wire Wire Line
+	5800 5500 6550 5500
+Wire Wire Line
+	6550 5500 6550 5250
+Wire Wire Line
+	4900 4150 4500 4150
+Wire Wire Line
+	4500 4150 4500 4450
+Wire Wire Line
+	4050 4200 4050 5150
+Wire Wire Line
+	4500 4750 4500 5150
+Wire Wire Line
+	4050 5150 4850 5150
+Connection ~ 4500 5150
+Wire Wire Line
+	4900 4050 4900 3850
+Wire Wire Line
+	4500 3850 5500 3850
+Wire Wire Line
+	5500 3850 5500 4600
+Connection ~ 4900 3850
+Wire Wire Line
+	4500 3550 4050 3550
+Wire Wire Line
+	4050 3550 4050 4000
+Wire Wire Line
+	4500 3550 4500 3050
+Wire Wire Line
+	4500 3050 5000 3050
+Wire Wire Line
+	5750 3050 5750 4000
+Wire Wire Line
+	5750 4000 6100 4000
+Wire Wire Line
+	6100 4200 5950 4200
+Wire Wire Line
+	5950 4200 5950 4400
+Wire Wire Line
+	5950 4400 4900 4400
+Wire Wire Line
+	4900 4150 4900 4800
+Wire Wire Line
+	5750 3050 5100 3050
+Wire Wire Line
+	5100 3050 5100 2700
+Wire Wire Line
+	4900 4800 5550 4800
+Wire Wire Line
+	5550 4800 5550 5300
+Wire Wire Line
+	5550 5300 5150 5300
+Connection ~ 4900 4400
+$Comp
+L Screw_Terminal_01x02 J5
+U 1 1 5C8C82A9
+P 7300 4050
+F 0 "J5" H 7300 4150 50  0000 C CNN
+F 1 "Hook GPIO Block" H 7300 3850 50  0000 C CNN
+F 2 "" H 7300 4050 50  0001 C CNN
+F 3 "" H 7300 4050 50  0001 C CNN
+	1    7300 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Screw_Terminal_01x02 J4
+U 1 1 5C8C8431
+P 2400 4100
+F 0 "J4" H 2400 4200 50  0000 C CNN
+F 1 "Ringer GPIO Block" H 2400 4300 50  0000 C CNN
+F 2 "" H 2400 4100 50  0001 C CNN
+F 3 "" H 2400 4100 50  0001 C CNN
+	1    2400 4100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6700 4000 7100 4000
+Wire Wire Line
+	7100 3050 7100 4050
+Wire Wire Line
+	7100 4150 7100 4350
+Wire Wire Line
+	7100 4200 6700 4200
+Wire Wire Line
+	7100 3050 7800 3050
+Wire Wire Line
+	7800 3150 7400 3150
+Wire Wire Line
+	7400 3150 7400 4350
+Wire Wire Line
+	7400 4350 7100 4350
+Connection ~ 7100 4200
+Connection ~ 7100 4000
+Wire Wire Line
+	3150 4000 2600 4000
+Wire Wire Line
+	2600 4100 2600 4200
+Wire Wire Line
+	2600 4200 3450 4200
+Wire Wire Line
+	2800 4200 2800 5650
+Wire Wire Line
+	2800 5650 8800 5650
+Wire Wire Line
+	8800 5650 8800 2950
+Wire Wire Line
+	8800 2950 8300 2950
+Wire Wire Line
+	8300 3050 8650 3050
+Wire Wire Line
+	8650 3050 8650 5800
+Wire Wire Line
+	8650 5800 2900 5800
+Wire Wire Line
+	2900 5800 2900 4000
+Connection ~ 2900 4000
+Connection ~ 2800 4200
+NoConn ~ 8300 2850
+$EndSCHEMATC
