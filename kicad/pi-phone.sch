@@ -31,6 +31,7 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:pi-phone-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -174,8 +175,8 @@ Text Label 4900 4150 2    60   ~ 0
 Ringer_PSU_GND
 Text Label 4900 4050 2    60   ~ 0
 Ringer_PSU_5V
-Text Label 3150 4000 2    60   ~ 0
-Ringer_GPIO
+Text Label 2600 4000 0    60   ~ 0
+GPIO14
 Text Label 3450 4200 2    60   ~ 0
 RPi_GND
 Text Label 6700 4000 0    60   ~ 0
