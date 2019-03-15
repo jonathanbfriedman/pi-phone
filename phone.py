@@ -144,7 +144,7 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
             self.play_dial_tone()
 
         try:
-            GPIO.add_event_detect(self.hook_pin, GPIO.BOTH, callback=self.hook_change, bouncetime=50)
+            GPIO.add_event_detect(self.hook_pin, GPIO.BOTH, callback=self.hook_change)
             # self.hook_change(self.hook_pin)
             pause()
         except KeyboardInterrupt:
