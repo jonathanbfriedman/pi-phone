@@ -41,7 +41,7 @@ class Ringer(object):
         print("Playing ringer in " + str(wait)  + " minutes")
         sleep(wait*60) # convert minutes to seconds
         self.state = RINGING
-        while self.state == RINGING:
+        if self.state == RINGING:
             print("Ring ring...")
             GPIO.output(self.ringer_pin, GPIO.HIGH)
             sleep(self.ring_on)
