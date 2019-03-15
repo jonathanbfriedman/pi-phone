@@ -115,6 +115,7 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
 
 
     def hook_change(self, channel):
+        GPIO.output(self.ringer_pin, GPIO.LOW)
         print("hook change callback called")
         try:
             self.ringer_process.terminate()
