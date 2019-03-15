@@ -3,12 +3,12 @@
 # Configuration file
 
 # Ring interval (in minutes)
-RING_MIN = 3/60.0
-RING_MAX = 5/60.0
+RING_MIN = 5
+RING_MAX = 7
 
 # Ring style (in seconds)
 RING_ON = 2
-RING_OFF = 3
+RING_OFF = 5*60
 
 # Ringer output pin
 RINGER_PIN = 14 # GPIO numbering
