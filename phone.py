@@ -84,7 +84,7 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
         # Stop audio (works for dial tone or other audio)
         self.mixer.music.stop()
         # Start the ringer protocol as a process
-        ringer_process = Process(target=self.play_ringer, daemon=True)
+        ringer_process = Process(target=self.play_ringer)
         ringer_process.start()
         self.state = RINGING
         # ringer_process.join()
