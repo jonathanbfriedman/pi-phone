@@ -106,6 +106,12 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
                 sleep(0.1)
             self.state = DIAL_TONE
             self.play_dial_tone()
+        else:
+            try:
+                self.ringer_process.terminate()
+                GPIO.output(self.ringer_pin, GPIO.LOW)
+            except:
+                pass
 
 
     def hook_change(self, channel):
@@ -141,5 +147,13 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
             # self.hook_change(self.hook_pin)
             pause()
         except KeyboardInterrupt:
-            GPIO.cleanup()
+            try:
+                self.ringer_process.terminate()
+            except:
+                pass
+                GPIO.cleanup()
+        try:
+            self.ringer_process.terminate()
+        except:
+            pass
         GPIO.cleanup()
