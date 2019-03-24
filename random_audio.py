@@ -40,8 +40,11 @@ class RandomAudio(object):
     def play_random_audio(self):
         audio_file = join(self.audio_directory, self.select_audio())
         assert(audio_file != None)
-        self.mixer.music.load(audio_file)
-        self.mixer.music.play()
-        # while pygame.mixer.music.get_busy() == True:
-        #     continue
-        self.state = PLAYING
+        try:
+            self.mixer.music.load(audio_file)
+            self.mixer.music.play()
+            # while pygame.mixer.music.get_busy() == True:
+            #     continue
+            self.state = PLAYING
+        except pygame.error:
+            print("Error playing file " + audio_file)
