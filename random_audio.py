@@ -3,10 +3,13 @@
 import pygame
 from random import choice
 
+from glob import glob
+
 from os import listdir
 from os.path import isfile, join
 
 from config import PLAYING
+from config import FILETYPES
 
 
 class RandomAudio(object):
@@ -21,7 +24,9 @@ class RandomAudio(object):
 
     def get_audio_list(self):
         audio_directory = self.audio_directory
-        files_list = [f for f in listdir(audio_directory) if isfile(join(audio_directory, f))]
+        files_list = []
+        for filetype in FILETYPES:
+            files_list.extend(glob(join(audio_directory, '*.' + filetype)))
         self.files_list = files_list
         return files_list
 

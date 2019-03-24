@@ -27,3 +27,9 @@ PLAYING = 0
 RINGING = 1
 DIAL_TONE = 2
 SILENCE = 3
+
+# Music file types
+FILETYPES = (
+        'mp3',
+        'wav',
+        )
