@@ -84,6 +84,7 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
         # Stop audio (works for dial tone or other audio)
         try:
             self.player.stop()
+            self.player.quit()
         except:
             pass
         # Start the ringer protocol as a process
@@ -96,22 +97,14 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
     def on_to_off_hook(self):
         print("on_to_off_hook called")
         # If ringer is playing:
-        if self.state == RINGING:
-            # Stop ringer process
+        try:
             self.ringer_process.terminate()
-            # Force ringer pin output to low
             GPIO.output(self.ringer_pin, GPIO.LOW)
-        if self.state != PLAYING:
-            # Play random audio
-            self.state = PLAYING
-            self.play_random_audio()
-        else:
-            try:
-                self.ringer_process.terminate()
-                GPIO.output(self.ringer_pin, GPIO.LOW)
-            except:
-                pass
-
+        except:
+            pass
+        # Play random audio
+        self.play_random_audio()
+        self.state = PLAYING
 
     def hook_change(self, channel):
         GPIO.output(self.ringer_pin, GPIO.LOW)
@@ -119,7 +112,11 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
         try:
             self.ringer_process.terminate()
             print("Ringer process terminated.")
+        except:
+            pass
+        try:
             self.player.stop()
+            self.player.quit()
             print("Audio playback stopped.")
         except:
             pass
@@ -137,9 +134,7 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
             ringer_process.start()
             self.ringer_process = ringer_process
         else:
-            # Play random audio
-            self.state = PLAYING
-            self.play_random_audio()
+            self.on_to_off_hook()
 
         try:
             GPIO.add_event_detect(self.hook_pin, GPIO.BOTH, callback=self.hook_change)
