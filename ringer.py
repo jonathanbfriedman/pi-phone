@@ -46,4 +46,5 @@ class Ringer(object):
             GPIO.output(self.ringer_pin, GPIO.HIGH)
             sleep(self.ring_on)
             GPIO.output(self.ringer_pin, GPIO.LOW)
+            print("Next ring in " + str(self.ring_off/60.0) + " minutes...")
             sleep(self.ring_off)
