@@ -1,7 +1,8 @@
 #! /usr/bin/python3
 
-import pygame
 from random import choice
+
+from omxplayer.player import OMXPlayer
 
 from glob import glob
 
@@ -19,8 +20,6 @@ class RandomAudio(object):
 
     def __init__(self, audio_directory):
         self.audio_directory = audio_directory
-        pygame.mixer.init()
-        self.mixer = pygame.mixer
 
     def get_audio_list(self):
         audio_directory = self.audio_directory
@@ -41,10 +40,8 @@ class RandomAudio(object):
         audio_file = join(self.audio_directory, self.select_audio())
         assert(audio_file != None)
         try:
-            self.mixer.music.load(audio_file)
-            self.mixer.music.play()
-            # while pygame.mixer.music.get_busy() == True:
-            #     continue
+            player = OMXPlayer(audio_file)
+            self.player = player
             self.state = PLAYING
-        except pygame.error:
+        except:
             print("Error playing file " + audio_file)

@@ -56,7 +56,7 @@ class TestRandomAudio(TestCase):
         random_audio.play_random_audio()
         sleep(5)
         self.assertEqual(random_audio.state, PLAYING)
-        random_audio.mixer.music.stop()
+        random_audio.player.stop()
 
 
 class TestHook(TestCase):

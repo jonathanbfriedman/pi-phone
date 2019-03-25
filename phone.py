@@ -82,7 +82,10 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
     def off_to_on_hook(self):
         print("off_to_on_hook called")
         # Stop audio (works for dial tone or other audio)
-        self.mixer.music.stop()
+        try:
+            self.player.stop()
+        except:
+            pass
         # Start the ringer protocol as a process
         ringer_process = Process(target=self.play_ringer)
         ringer_process.start()
@@ -102,10 +105,6 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
             # Play random audio
             self.state = PLAYING
             self.play_random_audio()
-            # while self.mixer.music.get_busy():
-            #     sleep(0.1)
-            # self.state = DIAL_TONE
-            # self.play_dial_tone()
         else:
             try:
                 self.ringer_process.terminate()
@@ -116,9 +115,12 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
 
     def hook_change(self, channel):
         GPIO.output(self.ringer_pin, GPIO.LOW)
-        print("hook change callback called")
+        print("Hook change detected.")
         try:
             self.ringer_process.terminate()
+            print("Ringer process terminated.")
+            self.player.stop()
+            print("Audio playback stopped.")
         except:
             pass
         assert(channel == self.hook_pin)
@@ -138,10 +140,6 @@ class Phone(Ringer, Hook, DialTone, RandomAudio):
             # Play random audio
             self.state = PLAYING
             self.play_random_audio()
-            # while self.mixer.music.get_busy():
-            #     sleep(0.2)
-            # self.state = DIAL_TONE
-            # self.play_dial_tone()
 
         try:
             GPIO.add_event_detect(self.hook_pin, GPIO.BOTH, callback=self.hook_change)
