@@ -41,6 +41,7 @@ class RandomAudio(object):
         assert(audio_file != None)
         try:
             player = OMXPlayer(audio_file)
+            print("Playing `" + audio_file + "`")
             self.player = player
             self.state = PLAYING
         except:
